@@ -38,14 +38,9 @@ SECRET_KEY = get_env_variable('SECRET_KEY')
 # SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://port-0-you-map-3prof2llkumhr4n.sel4.cloudtype.app/']
-
-DJANGO_SUPERUSER_PASSWORD = 'admin1234'
-DJANGO_SUPERUSER_EMAIL = 'admin@sogang.ac.kr'
-DJANGO_SUPERUSER_USERNAME = 'admin'
-DJANGO_SUPERUSER_NICKNAME='ad'
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -62,8 +57,6 @@ INSTALLED_APPS = [
     'accounts',
     'likes',
     'buildings',
-    'rest_framework_simplejwt',
-    
 ]
 
 MIDDLEWARE = [
@@ -163,11 +156,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 REST_FRAMEWORK = {
-
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',  # 인증된 사용자만 접근
         'rest_framework.permissions.IsAdminUser',  # 관리자만 접근
