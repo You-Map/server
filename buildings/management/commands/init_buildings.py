@@ -200,7 +200,12 @@ class Command(BaseCommand):
                 name = purpose['name'],
                 glyph = purpose['glyph']
             )
-            
+        
+        for buildingpurpose in self.BuidlingPurposes:
+            BuildingPurpose.objects.get_or_create(
+                building = Building.objects.get(id = buildingpurpose['building'])
+                purpose = Purpose.object.get(id = buildingpurpose['purpose'])
+            )
 
         self.stdout.write(self.style.SUCCESS('Buildings initialized'))
         return 0
